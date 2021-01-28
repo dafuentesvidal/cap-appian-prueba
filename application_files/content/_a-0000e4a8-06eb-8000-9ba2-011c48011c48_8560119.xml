@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8560414</versionUuid>
+    <rule>
+        <name>RC_ER_GetMaestroUsuariosBlues</name>
+        <uuid>_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8560119</uuid>
+        <description>Query que retorna los datos de los usuarios de la tabla de maestra de usuarios blues</description>
+        <parentUuid>_a-0000e480-7e67-8000-9ba2-011c48011c48_8288654</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>with(
+  local!batchsize: 100,
+  local!totalCount: #"SYSTEM_SYSRULES_queryEntity_v1"(
+    entity: #"_a-0000e480-7e67-8000-9ba2-011c48011c48_8432778",
+    query: #"SYSTEM_SYSRULES_query"(
+      logicalexpression: #"SYSTEM_SYSRULES_queryLogicalExpression"(
+        operator: "AND",
+        logicalExpressions: {
+          #"SYSTEM_SYSRULES_queryLogicalExpression"(
+            operator: "OR",
+            filters: {
+              #"SYSTEM_SYSRULES_queryFilter"(
+                field: "GeografiaEsp",
+                operator: "=",
+                value: ri!Geografia
+              ),
+              #"SYSTEM_SYSRULES_queryFilter"(
+                field: "GeografiaEng",
+                operator: "=",
+                value: ri!Geografia
+              )
+            },
+            ignoreFiltersWithEmptyValues: true()
+          ),
+          #"SYSTEM_SYSRULES_queryLogicalExpression"(
+            operator: "OR",
+            filters: {
+              #"SYSTEM_SYSRULES_queryFilter"(
+                field: "PaisEsp",
+                operator: "=",
+                value: ri!Pais
+              ),
+              #"SYSTEM_SYSRULES_queryFilter"(
+                field: "PaisEng",
+                operator: "=",
+                value: ri!Pais
+              )
+            },
+            ignoreFiltersWithEmptyValues: true()
+          )
+        },
+        filters: {
+          #"SYSTEM_SYSRULES_queryFilter"(
+            field: "IdUsuario",
+            operator: "in",
+            value: ri!Ids
+          ),
+          #"SYSTEM_SYSRULES_queryFilter"(
+            field: "Usuario",
+            operator: "=",
+            value: ri!Usuario
+          ),
+          #"SYSTEM_SYSRULES_queryFilter"(
+            field: "IdDireccion",
+            operator: "in",
+            value: ri!IdDireccion
+          ),
+          #"SYSTEM_SYSRULES_queryFilter"(
+            field: "Moneda",
+            operator: "=",
+            value: ri!Moneda
+          ),
+          #"SYSTEM_SYSRULES_queryFilter"(
+            field: "ctlEstado",
+            operator: "=",
+            value: ri!Estado
+          )
+        },
+        ignoreFiltersWithEmptyValues: true
+      ),
+      pagingInfo: #"SYSTEM_SYSRULES_pagingInfo"(
+        startIndex: 1,
+        batchSize: 1
+      )
+    ),
+    fetchTotalCount: true
+  ).totalCount,
+  local!numOfQueriesDecimal: local!totalCount/local!batchsize,
+  local!numOfQueries: if(
+    mod(local!numOfQueriesDecimal, 1) = 0,
+    tointeger(local!numOfQueriesDecimal),
+    tointeger(rounddown(local!numOfQueriesDecimal,0)) + 1
+  ),
+  local!pagingInfo: #"SYSTEM_SYSRULES_forEach"(
+    enumerate(local!numOfQueries),
+    #"SYSTEM_SYSRULES_pagingInfo"(
+      startIndex: fv!item * local!batchsize + 1,
+      batchSize: local!batchsize
+    )
+  ),
+  local!query: #"SYSTEM_SYSRULES_forEach"(
+    local!pagingInfo,
+    #"SYSTEM_SYSRULES_queryEntity_v1"(
+      entity: #"_a-0000e480-7e67-8000-9ba2-011c48011c48_8432778",
+      query: #"SYSTEM_SYSRULES_query"(
+        logicalexpression: #"SYSTEM_SYSRULES_queryLogicalExpression"(
+          operator: "AND",
+          logicalExpressions: {
+            #"SYSTEM_SYSRULES_queryLogicalExpression"(
+              operator: "OR",
+              filters: {
+                #"SYSTEM_SYSRULES_queryFilter"(
+                  field: "GeografiaEsp",
+                  operator: "=",
+                  value: ri!Geografia
+                ),
+                #"SYSTEM_SYSRULES_queryFilter"(
+                  field: "GeografiaEng",
+                  operator: "=",
+                  value: ri!Geografia
+                )
+              },
+              ignoreFiltersWithEmptyValues: true()
+            ),
+            #"SYSTEM_SYSRULES_queryLogicalExpression"(
+              operator: "OR",
+              filters: {
+                #"SYSTEM_SYSRULES_queryFilter"(
+                  field: "PaisEsp",
+                  operator: "=",
+                  value: ri!Pais
+                ),
+                #"SYSTEM_SYSRULES_queryFilter"(
+                  field: "PaisEng",
+                  operator: "=",
+                  value: ri!Pais
+                )
+              },
+              ignoreFiltersWithEmptyValues: true()
+            )
+          },
+          filters: {
+            #"SYSTEM_SYSRULES_queryFilter"(
+              field: "IdUsuario",
+              operator: "in",
+              value: ri!Ids
+            ),
+            #"SYSTEM_SYSRULES_queryFilter"(
+              field: "Usuario",
+              operator: "=",
+              value: ri!Usuario
+            ),
+            #"SYSTEM_SYSRULES_queryFilter"(
+              field: "IdDireccion",
+              operator: "in",
+              value: ri!IdDireccion
+            ),
+            #"SYSTEM_SYSRULES_queryFilter"(
+              field: "Moneda",
+              operator: "=",
+              value: ri!Moneda
+            ),
+            #"SYSTEM_SYSRULES_queryFilter"(
+              field: "ctlEstado",
+              operator: "=",
+              value: ri!Estado
+            )
+          },
+          ignoreFiltersWithEmptyValues: true
+        ),
+        pagingInfo: fv!item
+      )
+    ).data
+  ),
+  todatasubset(a!flatten(local!query))
+)</definition>
+        <namedTypedValue>
+            <name>Ids</name>
+            <type>
+                <name>Integer?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>Usuario</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>IdDireccion</name>
+            <type>
+                <name>Integer?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>Geografia</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>Pais</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>Moneda</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>Estado</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8560414"/>
+    </history>
+</contentHaul>

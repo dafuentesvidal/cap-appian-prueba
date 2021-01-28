@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e480-7e67-8000-9ba2-011c48011c48_8404933</versionUuid>
+    <rule>
+        <name>RC_ER_ObtenerAllUsers</name>
+        <uuid>_a-0000e480-7e67-8000-9ba2-011c48011c48_8404916</uuid>
+        <description>Regla para obtener todos los usuarios de la aplicación</description>
+        <parentUuid>_a-0000e480-7e67-8000-9ba2-011c48011c48_8288707</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>with(
+  local!batchSize: 300,
+  local!totalCount: a!groupMembers(
+    group: #"_a-0000e480-7e67-8000-9ba2-011c48011c48_8404396",
+    direct: false(),
+    memberType: "USER",
+    pagingInfo: #"SYSTEM_SYSRULES_pagingInfo"(1,1)
+  ).totalCount,
+  local!contador: append(
+    {1},
+    enumerate(rounddown(
+      local!totalCount/local!batchSize,0
+    ))*local!batchSize+(local!batchSize+1)
+  ),
+  local!users: #"SYSTEM_SYSRULES_forEach"(
+    local!contador,
+    a!groupMembers(
+      group: #"_a-0000e480-7e67-8000-9ba2-011c48011c48_8404396",
+      direct: false(),
+      memberType: "USER",
+      pagingInfo: #"SYSTEM_SYSRULES_pagingInfo"(fv!item,local!batchSize)
+    ).data
+  ),
+  a!flatten(local!users)
+)</definition>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e480-7e67-8000-9ba2-011c48011c48_8404933"/>
+    </history>
+</contentHaul>
