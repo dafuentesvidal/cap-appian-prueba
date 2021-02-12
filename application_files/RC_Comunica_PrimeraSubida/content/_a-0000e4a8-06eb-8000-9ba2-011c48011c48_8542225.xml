@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8542236</versionUuid>
+    <rule>
+        <name>RC_ER_ColoresGridComentarios</name>
+        <uuid>_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8542225</uuid>
+        <description>Expression Rule que devuelve un color dependiendo del grupo que ha hecho el comentario</description>
+        <parentUuid>_a-0000e480-7e67-8000-9ba2-011c48011c48_8288707</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>if(
+  contains(#"_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8540315",ri!Grupo),
+  choose(
+    wherecontains(ri!Grupo,#"_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8540315"),
+    "#ffbbbb",
+    "#ffdcb9",
+    "#b7dbff",
+    "#ffdcb9"
+  ),
+  "STANDARD"
+)</definition>
+        <namedTypedValue>
+            <name>Grupo</name>
+            <type>
+                <name>Group</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8542236"/>
+    </history>
+</contentHaul>

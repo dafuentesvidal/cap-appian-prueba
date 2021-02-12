@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e49c-9d0b-8000-9ba2-011c48011c48_8456604</versionUuid>
+    <rule>
+        <name>RC_ER_getLiterales</name>
+        <uuid>_a-0000e480-7e67-8000-9ba2-011c48011c48_8412556</uuid>
+        <description>Regla que obtiene todos los literales del properties según el lenguaje del usuario logado.</description>
+        <parentUuid>_a-0000e480-7e67-8000-9ba2-011c48011c48_8288707</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>/*
+ * Si la local del usuario no es español, se usa automáticamente el fichero en inglés
+ */
+with(
+  local!document: if(
+    contains(#"_a-0000e480-7e67-8000-9ba2-011c48011c48_8422019", userlocale(loggedInUser())),
+    #"_a-0000e480-7e67-8000-9ba2-011c48011c48_8292656"[1],
+    #"_a-0000e480-7e67-8000-9ba2-011c48011c48_8292656"[2]
+  ),
+  if(
+    isnull(local!document),
+    loadbundle(#"_a-0000e480-7e67-8000-9ba2-011c48011c48_8292656"[2]),
+    loadbundle(local!document)
+  )
+)</definition>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e49c-9d0b-8000-9ba2-011c48011c48_8456604"/>
+    </history>
+</contentHaul>
