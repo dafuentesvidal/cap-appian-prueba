@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<siteHaul xmlns:a="http://www.appian.com/ae/types/2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <versionUuid>cbd2c725-e1ff-45d3-99fc-46a273bf1cfe</versionUuid>
+  <site a:uuid="f9cf9783-fd69-44c3-9445-316d24683a7a" name="RC_HechosRelevantes">
+    <description>Site para gestionar los hechos relevantes de RC</description>
+    <urlStub>rc-hechosrelevantes</urlStub>
+    <page>
+      <nameExpr>#"_a-0000e480-7e67-8000-9ba2-011c48011c48_8413016"("sites.consulta")</nameExpr>
+      <urlStub>consulta</urlStub>
+      <uiObject a:uuid="0002e483-2b44-8000-f92f-7f0000014e7a" xsi:type="a:ProcessModel"/>
+      <iconId>f002</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>STANDARD</pageWidth>
+    </page>
+    <page>
+      <nameExpr>#"_a-0000e480-7e67-8000-9ba2-011c48011c48_8413016"("sites.alta")</nameExpr>
+      <urlStub>alta</urlStub>
+      <uiObject a:uuid="0002e483-2b44-8000-f92f-7f0000014e7a" xsi:type="a:ProcessModel"/>
+      <iconId>f067</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>STANDARD</pageWidth>
+    </page>
+    <page>
+      <nameExpr>#"_a-0000e480-7e67-8000-9ba2-011c48011c48_8413016"("sites.reporting")</nameExpr>
+      <urlStub>reporting</urlStub>
+      <uiObject a:uuid="0002e483-2b44-8000-f92f-7f0000014e7a" xsi:type="a:ProcessModel"/>
+      <iconId>f080</iconId>
+      <visibilityExpr>fn!true()</visibilityExpr>
+      <pageWidth>STANDARD</pageWidth>
+    </page>
+    <visibility>268435456</visibility>
+    <headerBackgroundColor>#eb0000</headerBackgroundColor>
+    <selectedTabBackgroundColor>#b30000</selectedTabBackgroundColor>
+    <faviconRef a:uuid="_a-0000e480-7e67-8000-9ba2-011c48011c48_8291235" xsi:type="a:CollaborationDocument"/>
+    <faviconHref xsi:nil="true"/>
+    <logoRef a:uuid="_a-0000e480-7e67-8000-9ba2-011c48011c48_8291228" xsi:type="a:CollaborationDocument"/>
+    <logoHref xsi:nil="true"/>
+    <headerBackgroundColorExpr xsi:nil="true"/>
+    <selectedTabBackgroundColorExpr xsi:nil="true"/>
+    <accentColor>#eb0000</accentColor>
+    <accentColorExpr xsi:nil="true"/>
+    <logoExpr xsi:nil="true"/>
+    <faviconExpr xsi:nil="true"/>
+    <showName>false</showName>
+    <tempoLinkVisibility>HIDDEN</tempoLinkVisibility>
+    <showRecordNews>true</showRecordNews>
+    <isSystem>false</isSystem>
+  </site>
+  <roleMap>
+    <role name="site_viewer">
+      <users/>
+      <groups>
+        <groupUuid>_e-0000e480-7e67-8000-9aee-01075c01075c_2243</groupUuid>
+      </groups>
+    </role>
+  </roleMap>
+  <history>
+    <historyInfo versionUuid="cbd2c725-e1ff-45d3-99fc-46a273bf1cfe"/>
+  </history>
+</siteHaul>

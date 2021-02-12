@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<groupHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_e-0000e480-7e67-8000-9aee-01075c01075c_2305</versionUuid>
+    <group>
+        <name>RC_Control_General</name>
+        <securityMap>SECURITYMAP_TEAM</securityMap>
+        <uuid>_e-0000e480-7e67-8000-9aee-01075c01075c_2294</uuid>
+        <groupTypeUuid>SYSTEM_GROUP_TYPE_CUSTOM</groupTypeUuid>
+        <parentUuid>_e-0000e480-7e67-8000-9aee-01075c01075c_2279</parentUuid>
+        <description>Grupo donde se guardan los usuarios de Control General</description>
+        <delegatedCreation>false</delegatedCreation>
+        <memberPolicy>MEMBERPOLICY_CLOSED</memberPolicy>
+        <viewingPolicy>VIEWINGPOLICY_LOW</viewingPolicy>
+        <attributes/>
+    </group>
+    <members>
+        <users/>
+        <groups/>
+    </members>
+    <admins>
+        <users/>
+        <groups/>
+    </admins>
+    <ruleSet/>
+    <history>
+        <historyInfo versionUuid="_e-0000e480-7e67-8000-9aee-01075c01075c_2305"/>
+    </history>
+</groupHaul>

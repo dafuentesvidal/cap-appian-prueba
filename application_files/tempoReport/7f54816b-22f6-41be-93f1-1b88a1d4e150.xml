@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tempoReportHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>e28a4e13-c85e-4004-814f-98af5d813e1d</versionUuid>
+    <tempoReport a:uuid="7f54816b-22f6-41be-93f1-1b88a1d4e150" name="RC_RP_SitePrincipal">
+        <a:description>Reporte para el site principal de Comunic@</a:description>
+        <a:uiExpr>=#"_a-0000e480-7e67-8000-9ba2-011c48011c48_8400165"()</a:uiExpr>
+        <a:urlStub>AizvGA</a:urlStub>
+    </tempoReport>
+    <roleMap>
+        <role name="report_viewer">
+            <users/>
+            <groups>
+                <groupUuid>_e-0000e480-7e67-8000-9aee-01075c01075c_2243</groupUuid>
+            </groups>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="e28a4e13-c85e-4004-814f-98af5d813e1d"/>
+    </history>
+</tempoReportHaul>

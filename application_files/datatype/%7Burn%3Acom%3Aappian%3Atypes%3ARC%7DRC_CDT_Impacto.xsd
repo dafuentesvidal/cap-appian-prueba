@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn:com:appian:types:RC"
+  xmlns:tns="urn:com:appian:types:RC" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="RC_CDT_Impacto">
+    <xsd:annotation>
+      <xsd:appinfo source="http://www.appian.com/ae/types/2009">
+        <ns2:Metadata xmlns:ns2="http://www.appian.com/ae/types/2009">
+          <ns2:versionUuid>0000e4a5-4de5-8000-f92f-7f0000014e7a</ns2:versionUuid>
+          <ns2:history>
+            <ns2:historyInfo versionUuid="0000e4a5-4de5-8000-f92f-7f0000014e7a"/>
+          </ns2:history>
+        </ns2:Metadata>
+      </xsd:appinfo>
+      <xsd:documentation><![CDATA[CDT que almacena información de un impacto]]></xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="IdImpacto" nillable="true" type="xsd:int">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Id @GeneratedValue</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="TipoImpacto" nillable="true" type="xsd:int"/>
+      <xsd:element name="Numero" nillable="true" type="xsd:int"/>
+      <xsd:element name="Divisa" nillable="true" type="xsd:int"/>
+      <xsd:element name="Importe" nillable="true" type="xsd:double"/>
+      <xsd:element name="Cuenta" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=255)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="TipoCambio" nillable="true" type="xsd:double"/>
+      <xsd:element name="ImporteLocal" nillable="true" type="xsd:double"/>
+      <xsd:element name="Descripcion" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=1000)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Estado" nillable="true" type="xsd:int"/>
+      <xsd:element name="FechaResolucion" nillable="true" type="xsd:date"/>
+      <xsd:element name="Resolucion" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=1000)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0"
+        name="ProcesosAfectados" nillable="true" type="xsd:int"/>
+      <xsd:element name="ClienteExternoAfectado" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=255)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="IdIncidencia" nillable="true" type="xsd:int"/>
+      <xsd:element name="ctlFechaModificacion" nillable="true" type="xsd:dateTime"/>
+      <xsd:element name="ctlUsuarioModificacion" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=255)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ctlFechaCreacion" nillable="true" type="xsd:dateTime"/>
+      <xsd:element name="ctlUsuarioCreacion" nillable="true" type="xsd:string">
+        <xsd:annotation>
+          <xsd:appinfo source="appian.jpa">@Column(length=255)</xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ctlEstado" nillable="true" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8540159</versionUuid>
+    <rule>
+        <name>RC_ER_GrupoPertenecienteUsuario</name>
+        <uuid>_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8540138</uuid>
+        <description>Expression rule que devuelve el literal del grupo perteneciente del usuario.</description>
+        <parentUuid>_a-0000e480-7e67-8000-9ba2-011c48011c48_8288707</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>index(
+  getgroupsformemberuser(ri!usuario),
+  wherecontains(
+    {#"_a-0000e480-7e67-8000-9ba2-011c48011c48_8404378", #"_a-0000e480-7e67-8000-9ba2-011c48011c48_8404384", #"_a-0000e480-7e67-8000-9ba2-011c48011c48_8404372", #"_a-0000e480-7e67-8000-9ba2-011c48011c48_8404390"},
+    getgroupsformemberuser(ri!usuario)
+  ),
+  null
+)</definition>
+        <namedTypedValue>
+            <name>usuario</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8540159"/>
+    </history>
+</contentHaul>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contentHaul xmlns:a="http://www.appian.com/ae/types/2009">
+    <versionUuid>_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8571478</versionUuid>
+    <rule>
+        <name>RC_ER_GetMaestroDivisas</name>
+        <uuid>_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8571461</uuid>
+        <description>Query para obtener las divisas de la tabla maestra</description>
+        <parentUuid>_a-0000e480-7e67-8000-9ba2-011c48011c48_8288654</parentUuid>
+        <visibility>
+            <advertise>false</advertise>
+            <hierarchy>true</hierarchy>
+            <indexable>true</indexable>
+            <quota>false</quota>
+            <searchable>true</searchable>
+            <system>false</system>
+            <unlogged>false</unlogged>
+        </visibility>
+        <definition>#"SYSTEM_SYSRULES_queryEntity_v1"(
+  entity: #"_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8571467",
+  query: #"SYSTEM_SYSRULES_query"(
+    logicalExpression: #"SYSTEM_SYSRULES_queryLogicalExpression"(
+      operator: "AND",
+      filters: {
+        #"SYSTEM_SYSRULES_queryFilter"(
+          field: "Id",
+          operator: "in",
+          value: ri!Id
+        ),
+        #"SYSTEM_SYSRULES_queryFilter"(
+          field: "Codigo",
+          operator: "in",
+          value: ri!Codigo
+        ),
+        #"SYSTEM_SYSRULES_queryFilter"(
+          field: "Descripcion",
+          operator: "=",
+          value: ri!Descripcion
+        ),
+        #"SYSTEM_SYSRULES_queryFilter"(
+          field: "ctlEstado",
+          operator: "=",
+          value: ri!ctlEstado
+        )
+      },
+      ignoreFiltersWithEmptyValues: true
+    ),
+    pagingInfo: #"SYSTEM_SYSRULES_pagingInfo"(
+      startIndex: 1,
+      batchSize: -1
+    )
+  ),
+  fetchTotalCount: true
+)</definition>
+        <namedTypedValue>
+            <name>Id</name>
+            <type>
+                <name>Integer?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>Codigo</name>
+            <type>
+                <name>Text?list</name>
+                <namespace>http://www.appian.com/ae/types/2009</namespace>
+            </type>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>Descripcion</name>
+            <type>
+                <name>string</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+            <value/>
+        </namedTypedValue>
+        <namedTypedValue>
+            <name>ctlEstado</name>
+            <type>
+                <name>boolean</name>
+                <namespace>http://www.w3.org/2001/XMLSchema</namespace>
+            </type>
+        </namedTypedValue>
+        <preferredEditor>legacy</preferredEditor>
+        <offlineEnabled>false</offlineEnabled>
+    </rule>
+    <roleMap public="true">
+        <role inherit="true" allowForAll="false" name="readers">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="authors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="true" allowForAll="false" name="administrators">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyReaders">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAuthors">
+            <users/>
+            <groups/>
+        </role>
+        <role inherit="false" allowForAll="false" name="denyAdministrators">
+            <users/>
+            <groups/>
+        </role>
+    </roleMap>
+    <history>
+        <historyInfo versionUuid="_a-0000e4a8-06eb-8000-9ba2-011c48011c48_8571478"/>
+    </history>
+</contentHaul>
